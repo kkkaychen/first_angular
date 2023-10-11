@@ -1,0 +1,27 @@
+<h1>練習1 directive & binding</h1>
+商品名稱<input type="text" [(ngModel)]="productName"/>
+<button (click)="addProduct()">新增商品</button>
+<button (click)="delAll()">清空下方表格</button>
+<button (click)="displayToggle()">顯示/隱藏 下方表格</button>
+<hr>
+<h4>商品列表</h4>
+<div *ngIf="this.displayStatus">
+  <table>
+    <thead>
+      <tr>
+        <th>編號</th>
+        <th>商品名稱</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of products; let i = index" [ngSwitch]="(i+1) % 2">
+      <tr *ngSwitchCase="1">
+        <td>{{i+1}}</td>
+        <td>{{item}}</td>
+      </tr>
+      <tr *ngSwitchCase="0" style="background-color: darkgray;">
+        <td>{{i+1}}</td>
+        <td>{{item}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

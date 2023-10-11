@@ -1,0 +1,24 @@
+<div>
+  <!-- 子 -->
+  <!-- 4.監聽子元件那邊有資料發射過來時，執行接收方法 (dataEmit)="mainGetFormData($event)" -->
+  <!-- [clearInfoForm] 子元件監聽父元件那邊送來的資料 -->
+  <app-form (dataEmit)="mainGetFormData($event)" [clearInfoForm]="clearInfoMain"></app-form>
+  <!-- 子 -->
+  <hr>
+    <div>
+      <div>
+        <div *ngFor="let element of serverElements">
+          <div>{{ element.name }}</div>
+          <div>
+            <p>
+              <span *ngIf="element.type === 'redprint'" style="color: red" >{{ element.content }}</span>
+              <span *ngIf="element.type === 'blueprint'" style="color: rgb(30, 0, 255)">{{ element.content }}</span>
+            </p>
+            <hr>
+          </div>
+        </div>
+      </div>
+      <button (click)="clear()"> 清空 </button>
+    </div>
+
+</div>
